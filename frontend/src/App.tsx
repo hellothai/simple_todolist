@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">      
         <p>
-          OI :D
+          Welcome :D
         </p>
        <Login></Login>
       <div>  <button onClick={() => setRegister(!register)}> Sign Up </button>

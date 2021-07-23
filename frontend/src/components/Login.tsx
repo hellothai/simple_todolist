@@ -1,18 +1,21 @@
 import React from 'react';
 import '../App.css';
+import Card from '@material-ui/core/Card';
 
 function Login() {
   return (
-    <div className="login">
+    <Card elevation={2} className="login" style={{maxHeight: 800}}>
         <p>
          name:
+         <input></input>
         </p>
-        <input></input>
+        
         <p>
          password:
+         <input></input>
         </p>
-        <input></input>
-    </div>
+       
+    </Card>
   );
 }
 
