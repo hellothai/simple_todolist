@@ -5,7 +5,7 @@ function Register() {
   return (
     <div className="Register">
         <p>
-         Sign Up 
+         hey
         </p>
     </div>
   );
