@@ -42,6 +42,21 @@ app.post('/login', ( req: Request<LoginRequest>, res ): void => {
   }
 });
 
+app.post('/register', ( req: Request<LoginRequest>, res ): void => {
+  console.log('>>> here');
+  console.log('>> ', req.body);
+  const { name, password, email } = req.body;
+  console.log(users.get(name));
+  if (name && password && email) {
+    users.set(name, password);
+    res.status(200).json("user ok");
+  } else {
+    res.status(400).send(
+      'Register failed.'
+    );
+  }
+});
+
 app.listen( port, () => {
   console.log( `server started at http://localhost:${ port }` );
 } );
