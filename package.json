@@ -1,0 +1,20 @@
+{
+  "name": "simple_todolist",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "docker-compose up",
+    "stop": "docker-compose down"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hellothai/simple_todolist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hellothai/simple_todolist/issues"
+  },
+  "homepage": "https://github.com/hellothai/simple_todolist#readme"
+}

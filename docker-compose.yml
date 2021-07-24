@@ -1,0 +1,25 @@
+---
+services:
+  frontend:
+    image: node:16-alpine
+    command: npm start -C app
+    ports:
+      - 9000:3000
+    volumes:
+      - ./frontend:/app
+    networks:
+        - todolist-network
+  backend:
+    image: node:16-alpine
+    command: npm run dev -C app
+    ports:
+      - 9001:3000
+    volumes:
+      - ./backend:/app
+    networks:
+        - todolist-network
+
+networks:
+  todolist-network:
+    driver: bridge
+    name: todolist-network
