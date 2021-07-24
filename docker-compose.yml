@@ -9,6 +9,7 @@ services:
       - ./frontend:/app
     networks:
         - todolist-network
+    tty: true
   backend:
     image: node:16-alpine
     command: npm run dev -C app
@@ -18,6 +19,7 @@ services:
       - ./backend:/app
     networks:
         - todolist-network
+    tty: true
 
 networks:
   todolist-network:

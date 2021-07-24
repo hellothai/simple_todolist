@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "docker-compose up",
-    "stop": "docker-compose down"
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "restart": "docker-compose restart"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/hellothai/simple_todolist/issues"
   },
-  "homepage": "https://github.com/hellothai/simple_todolist#readme"
+  "homepage": "https://github.com/hellothai/simple_todolist#readme",
+  "devDependencies": {
+    "@types/cors": "^2.8.12",
+    "@types/jsonwebtoken": "^8.5.4"
+  }
 }
