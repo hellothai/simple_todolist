@@ -6,18 +6,18 @@ import Login from './components/Login';
 import Register from './components/Register';
 
 function App() {
-  const [register ,setRegister] = useState(false);
-  const [loginOK ,setLogin] = useState(false);
+  const [register, setRegister] = useState(false);
+  const [loginOK, setLogin] = useState(false);
   return (
-    <div className="App">      
-        <p>
-          Welcome :D
-        </p>
-        { !loginOK ? <> 
-       <Login setLogin={() => setLogin(!loginOK)}></Login>
-      <div>  <Button onClick={() => setRegister(!register)}> Sign Up </Button>
-        {register && 
-      <Register></Register>}</div> </> :   <Dashboard/>   }
+    <div className="App">
+      <p>
+        Welcome to your to-do list :D
+      </p>
+      {!loginOK ? <>
+        <Login setLogin={() => setLogin(!loginOK)}></Login>
+        <div>  <Button onClick={() => setRegister(!register)}> Sign Up </Button>
+          {register &&
+            <Register></Register>}</div> </> : <Dashboard />}
     </div>
   );
 }
