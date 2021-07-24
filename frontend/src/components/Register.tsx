@@ -1,4 +1,4 @@
-import { Card } from '@material-ui/core';
+import { Button, Card, TextField, Typography } from '@material-ui/core';
 import React from 'react';
 import '../App.css';
 
@@ -65,31 +65,30 @@ function Register() {
         <div>{success}</div>
       ) : (
         <form onSubmit={(e) => submit(e)}>
-          <p>
-            name:
-            <input
-              type="text"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-            ></input>
-          </p>
-          <p>
-            password:
-            <input
-              type="text"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </p>
-          <p>
-            email:
-            <input
-              type="text"
-              name="email"
-              onChange={(e) => setEmail(e.target.value)}
-            ></input>
-          </p>
-          <input type="submit" value="Submit" />
+           <TextField
+          id="filled-name"
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          variant="filled"
+        />  
+           <TextField
+          id="filled-name"
+          label="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          variant="filled"
+        />     
+        
+        <TextField
+        id="filled-name"
+        label="Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        variant="filled"
+      />  
+      <br/>
+          <Button size="small" type="submit" value="Submit">Submit </Button>
           {error.length > 0 ? <div>{error}</div> : null}
         </form>
       )}

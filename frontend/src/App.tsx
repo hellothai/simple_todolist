@@ -1,3 +1,4 @@
+import { Button } from '@material-ui/core';
 import React, { useState } from 'react';
 import './App.css';
 import Login from './components/Login';
@@ -11,7 +12,7 @@ function App() {
           Welcome :D
         </p>
        <Login></Login>
-      <div>  <button onClick={() => setRegister(!register)}> Sign Up </button>
+      <div>  <Button onClick={() => setRegister(!register)}> Sign Up </Button>
         {register && 
       <Register></Register>}</div>     
     </div>

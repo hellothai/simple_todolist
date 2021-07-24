@@ -1,6 +1,7 @@
 import React from 'react';
 import '../App.css';
 import Card from '@material-ui/core/Card';
+import { Button, TextField } from '@material-ui/core';
 
 type LoginForm = {
   name: string;
@@ -61,23 +62,22 @@ function Login() {
         <div>{success}</div>
       ) : (
         <form onSubmit={(e) => submit(e)}>
-          <p>
-            name:
-            <input
-              type="text"
-              name="name"
-              onChange={(e) => setName(e.target.value)}
-            ></input>
-          </p>
-          <p>
-            password:
-            <input
-              type="text"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-            ></input>
-          </p>
-          <input type="submit" value="Submit" />
+          <TextField
+          id="filled-name"
+          label="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          variant="filled"
+        />  
+           <TextField
+          id="filled-name"
+          label="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          variant="filled"
+        /> 
+        <br/> 
+          <Button size="small" variant="contained" type="submit">Submit</Button>
           {error.length > 0 ? <div>{error}</div> : null}
         </form>
       )}
