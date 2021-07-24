@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import Card from '@material-ui/core/Card';
 import { Button, TextField } from '@material-ui/core';
+import Dashboard from './Dashboard';
 
 type LoginForm = {
   name: string;
@@ -30,7 +31,7 @@ async function login(data: LoginForm) {
   }
 }
 
-function Login() {
+function Login(props) {
   const [name, setName] = React.useState<string>('');
   const [password, setPassword] = React.useState<string>('');
   const [error, setError] = React.useState<string>('');
@@ -58,8 +59,7 @@ function Login() {
 
   return (
     <Card elevation={2} className="login" style={{ maxHeight: 800 }}>
-      {success.length > 0 ? (
-        <div>{success}</div>
+      {success.length > 0 ? (     props.setLogin() 
       ) : (
         <form onSubmit={(e) => submit(e)}>
           <TextField

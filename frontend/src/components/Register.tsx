@@ -65,14 +65,14 @@ function Register() {
         <div>{success}</div>
       ) : (
         <form onSubmit={(e) => submit(e)}>
-           <TextField
+           <TextField required
           id="filled-name"
           label="Name"
           value={name}
           onChange={(e) => setName(e.target.value)}
           variant="filled"
         />  
-           <TextField
+           <TextField required
           id="filled-name"
           label="Password"
           value={password}
