@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Card from '@material-ui/core/Card';
-import { Button, TextField } from '@material-ui/core';
+import { Button, Grid, TextField } from '@material-ui/core';
 import '../App.css';
 // import Dashboard from './Dashboard';
 import { useSelector, useDispatch } from 'react-redux';
@@ -43,34 +43,42 @@ function LoginForm(props: { submit: (credentials: Credentials) => void }) {
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        props.submit({
-          username: name,
-          password,
-        });
-      }}
-    >
-      <TextField
-        id="name"
-        label="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        variant="filled"
-      />
-      <TextField
-        id="password"
-        label="Password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        variant="filled"
-      />
-      <br />
-      <Button size="small" variant="contained" type="submit">
-        Submit
-      </Button>
-    </form>
+    
+      <Grid className="" >
+        <Grid sm={6} item>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              props.submit({
+                username: name,
+                password,
+              });
+            }}
+          >
+            <TextField
+              id="name"
+              label="Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              variant="filled"
+              size="small"
+            />
+            <TextField
+              id="password"
+              label="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              variant="filled"
+              size="small"
+            />
+            <br />
+            <Button size="small" variant="contained" type="submit">
+              Submit
+            </Button>
+          </form>
+        </Grid> </Grid>
+
+
   );
 }
 

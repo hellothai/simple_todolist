@@ -1,4 +1,4 @@
-import { Button, Card, TextField, Typography } from '@material-ui/core';
+import { Button, Card, TextField } from '@material-ui/core';
 import React from 'react';
 import '../App.css';
 
@@ -71,6 +71,7 @@ function Register() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           variant="filled"
+          size="small"
         />  
            <TextField required
           id="filled-name"
@@ -78,6 +79,7 @@ function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           variant="filled"
+          size="small"
         />     
         
         <TextField
@@ -86,6 +88,7 @@ function Register() {
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         variant="filled"
+        size="small"
       />  
       <br/>
           <Button size="small" type="submit" value="Submit">Submit </Button>

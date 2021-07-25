@@ -7,11 +7,12 @@ import Login from './components/Login';
 import Register from './components/Register';
 import store, { Store } from './redux/store';
 import { Auth } from './redux/auth'
+import "tailwindcss/tailwind.css";
 
 function App() {
   return (
     <Provider store={store}>
-      <Router>
+      <Router >
         <Links />
         <Routes />
       </Router>
@@ -35,8 +36,8 @@ function Home() {
 
 function Links() {
   return (
-    <div>
-      <nav>
+    <div className="bg-gray-100 pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg " >
+      <nav className="">
         <ul>
           <li>
             <Link to="/">Home</Link>

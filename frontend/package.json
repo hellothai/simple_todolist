@@ -25,14 +25,14 @@
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
     "sinon": "^11.1.1",
-    "tailwindcss": "^2.2.7",
     "ts-node": "^10.1.0",
     "typescript": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "npm run tailwind && react-scripts start",
+    "build": "npm run tailwind && react-scripts build",
+    "tailwind": "tailwindcss build -i src/tailwind.css -c tailwind.config.js -o src/index.css",
     "test": "nyc ./node_modules/.bin/_mocha 'test/*.tsx'",
     "eject": "react-scripts eject"
   },
@@ -55,6 +55,9 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router-dom": "^5.1.8"
+    "@types/react-router-dom": "^5.1.8",
+    "autoprefixer": "^10.3.1",
+    "postcss": "^8.3.6",
+    "tailwindcss": "^2.2.7"
   }
 }

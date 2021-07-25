@@ -6,7 +6,7 @@ import '../App.css';
 function Dashboard() {
 
     return (
-        <Card elevation={2} className="Dashboard" style={{ maxHeight: 800 }}>
+        <Card elevation={2} className="" style={{ maxHeight: 800 }}>
             Hello
         </Card>
     );
