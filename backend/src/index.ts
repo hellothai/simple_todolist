@@ -20,18 +20,16 @@ users.set('thais', '123456');
 users.set('breno', '123456');
 
 type LoginRequest = {
-  name: string,
+  username: string,
   password: string
 }
 
 app.post('/login', ( req: Request<LoginRequest>, res ): void => {
-  console.log('>>> here');
-  console.log('>> ', req.body);
-  const { name, password } = req.body;
-  console.log(users.get(name));
-  if (users.has(name) && users.get(name) === password) {
+  const request: LoginRequest = req.body;
+  const {username, password} = {...request};
+  if (users.has(username) && users.get(username) === password) {
     const token = jwt.sign({
-      name: name,
+      username,
       role: 'user'
     }, secret);
     res.status(200).json({token});
@@ -43,13 +41,10 @@ app.post('/login', ( req: Request<LoginRequest>, res ): void => {
 });
 
 app.post('/register', ( req: Request<LoginRequest>, res ): void => {
-  console.log('>>> here');
-  console.log('>> ', req.body);
   const { name, password, email } = req.body;
-  console.log(users.get(name));
   if (name && password && email) {
     users.set(name, password);
-    res.status(200).json("user ok");
+    res.status(200).json('user ok');
   } else {
     res.status(400).send(
       'Register failed.'

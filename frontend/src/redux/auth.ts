@@ -38,34 +38,39 @@ export function loginLoading() {
 }
 
 export function authenticate(credentials: Credentials) {
-  return (dispatch: (arg: any) => any) => {
+  // todo: 
+  //  1. add token to cookies
+  //  2. verify that tokens are not in cookies on startup
+  return async (dispatch: (arg: any) => any) => {
     dispatch(loginLoading());
-    fetch('http://localhost:9001/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(credentials),
-    })
-    .then(async response => {
-      return response.json().then(token => {
-        dispatch(loginSuccess(token))
+    try {
+      
+      const response = await fetch('http://localhost:9001/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(credentials),
       });
-    })
-    .catch(response => {
-      return response.text().then((error: string) => {
+      if (response.status === 200) {
+          const { token } = await response.json();
+          dispatch(loginSuccess(token))
+      } else {
+        const error = await response.text();
         dispatch(loginFailed(error))
-      });
-    });
+      }
+    } catch (err) {
+      dispatch(loginFailed(err.message));
+    }
   }
 }
 
 export default function reducer(state = authState, action: Action) {
   switch (action.type) {
     case LOGIN_SUCCESS:
-      return { token: action.payload, error: null, loading: false };
+      return { ...state, token: action.payload, error: null, loading: false };
     case LOGIN_FAILED:
-      return { token: null, error: action.payload, loading: false };
+      return { ...state, token: null, error: action.payload, loading: false };
     case LOGIN_LOADING:
       return { ...state, loading: true };
     default:
