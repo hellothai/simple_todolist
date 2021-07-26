@@ -1,5 +1,5 @@
 import { Button, Card, TextField } from '@material-ui/core';
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
 
 type RegisterForm = {
@@ -30,11 +30,11 @@ async function register(data: RegisterForm) {
 
 
 function Register() {
-  const [name, setName] = React.useState<string>('');
-  const [password, setPassword] = React.useState<string>('');
-  const [email, setEmail] = React.useState<string>('');
-  const [error, setError] = React.useState<string>('');
-  const [success, setSuccess] = React.useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [error, setError] = useState<string>('');
+  const [success, setSuccess] = useState<string>('');
 
 
   const submit = (e) => {

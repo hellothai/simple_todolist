@@ -7,7 +7,7 @@ function Dashboard() {
 
     return (
         <Card elevation={2} className="" style={{ maxHeight: 800 }}>
-            Hello
+            Dashboard
         </Card>
     );
 

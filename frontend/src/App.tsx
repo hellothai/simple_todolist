@@ -1,18 +1,20 @@
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 import './App.css';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login';
 import Register from './components/Register';
 import store, { Store } from './redux/store';
-import { Auth } from './redux/auth'
-import "tailwindcss/tailwind.css";
+import 'tailwindcss/tailwind.css';
+import { useEffect } from 'react';
+import Redirect from './components/Redirect'
+import { logout } from './redux/auth'
 
 function App() {
   return (
     <Provider store={store}>
-      <Router >
+      <Router>
         <Links />
         <Routes />
       </Router>
@@ -24,34 +26,64 @@ function Home() {
   const auth = useSelector((state: Store) => state.auth);
   return (
     <div>
+      <div>Home</div>
       <div>
-      Home
-      </div>
-      <div>
-        is authenticated: { auth ? 'YES' : 'NO' }
+        {auth.logged ? (
+          <User user={auth.user} />
+        ) : (
+          <Redirect message={'you must log in'} to={'/login'} />
+        )}
       </div>
     </div>
   );
 }
 
+function User(props: { user: any }) {
+  return <div>User: {props.user}</div>;
+}
+
 function Links() {
+  const auth = useSelector((state: Store) => state.auth);
   return (
-    <div className="bg-gray-100 pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg " >
+    <div className="bg-gray-100 pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg ">
       <nav className="">
         <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/register">Register</Link>
-          </li>
+          {!auth.logged ? (
+            <>
+              <li>
+                <Link to="/login">Login</Link>
+              </li>
+              <li>
+                <Link to="/register">Register</Link>
+              </li>
+            </>
+          ) : (
+          <>
+            <li>
+              <Link to="/dashboard">Dashboard</Link>
+            </li>
+            <li>
+              <Link to="/logout">Logout</Link>
+            </li>
+          </>
+          )}
         </ul>
       </nav>
     </div>
   );
+}
+
+function Logout() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(logout());
+  });
+  return (
+    <Redirect message={'to home. logging out'} to={'/'} />
+  )
 }
 
 function Routes() {
@@ -65,6 +97,9 @@ function Routes() {
       </Route>
       <Route path="/login">
         <Login />
+      </Route>
+      <Route path="/logout">
+        <Logout />
       </Route>
       <Route path="/">
         <Home />
