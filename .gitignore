@@ -1,5 +1,7 @@
 # Other
 
+frontend/src/index.css
+
 **/node_modules
 **/dist
 **/package-lock.json
