@@ -10,6 +10,7 @@ import 'tailwindcss/tailwind.css';
 import { useEffect } from 'react';
 import Redirect from './components/Redirect'
 import { logout } from './redux/auth'
+import { ButtonGroup, Button } from '@material-ui/core';
 
 function App() {
   return (
@@ -48,31 +49,23 @@ function Links() {
     <div className="bg-gray-100 pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg ">
       <nav className="">
         <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
+            <Link to="/">Home </Link>
+          
           {!auth.logged ? (
-            <>
-              <li>
-                <Link to="/login">Login</Link>
-              </li>
-              <li>
-                <Link to="/register">Register</Link>
-              </li>
-            </>
+            <ButtonGroup size="small" aria-label="small outlined button group">
+              <Button>  <Link to="/login">Login</Link></Button>
+              <Button>     <Link to="/register">Register</Link></Button>
+            </ButtonGroup>
           ) : (
-          <>
-            <li>
-              <Link to="/dashboard">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/logout">Logout</Link>
-            </li>
-          </>
+            <ButtonGroup size="small" aria-label="small outlined button group">
+              <Button> <Link to="/dashboard">Dashboard</Link></Button>
+              <Button> <Link to="/logout">Logout</Link></Button>
+            </ButtonGroup>
+
           )}
         </ul>
       </nav>
-    </div>
+    </div >
   );
 }
 
