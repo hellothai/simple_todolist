@@ -10,7 +10,7 @@ import 'tailwindcss/tailwind.css';
 import { useEffect } from 'react';
 import Redirect from './components/Redirect'
 import { logout } from './redux/auth'
-import { ButtonGroup, Button } from '@material-ui/core';
+import { ButtonGroup, Button, Grid } from '@material-ui/core';
 
 function App() {
   return (
@@ -26,7 +26,7 @@ function App() {
 function Home() {
   const auth = useSelector((state: Store) => state.auth);
   return (
-    <div>
+    <div className="pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg">
       <div>Home</div>
       <div>
         {auth.logged ? (
@@ -46,26 +46,20 @@ function User(props: { user: any }) {
 function Links() {
   const auth = useSelector((state: Store) => state.auth);
   return (
-    <div className="bg-gray-100 pt-5 font-bold inset-0 bg-gradient-to-r from-cyan-400 to-sky-500 shadow-lg ">
-      <nav className="">
-        <ul>
-            <Link to="/">Home </Link>
-          
-          {!auth.logged ? (
-            <ButtonGroup size="small" aria-label="small outlined button group">
-              <Button>  <Link to="/login">Login</Link></Button>
-              <Button>     <Link to="/register">Register</Link></Button>
-            </ButtonGroup>
-          ) : (
-            <ButtonGroup size="small" aria-label="small outlined button group">
-              <Button> <Link to="/dashboard">Dashboard</Link></Button>
-              <Button> <Link to="/logout">Logout</Link></Button>
-            </ButtonGroup>
-
-          )}
-        </ul>
-      </nav>
-    </div >
+    <Grid className="pt-5 font-bold bg-gradient-to-r from-cyan-400 to-sky-500" container justify="space-between">
+      <Link to="/">Home </Link>
+      {!auth.logged ? (
+        <ButtonGroup size="small" aria-label="small outlined button group">
+          <Button>  <Link to="/login">Login</Link></Button>
+          <Button>     <Link to="/register">Register</Link></Button>
+        </ButtonGroup>
+      ) : (
+        <ButtonGroup size="small" aria-label="small outlined button group">
+          <Button> <Link to="/dashboard">Dashboard</Link></Button>
+          <Button> <Link to="/logout">Logout</Link></Button>
+        </ButtonGroup>
+      )}
+    </Grid >
   );
 }
 
